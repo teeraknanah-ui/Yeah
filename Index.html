@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffd1dc, #ffe6f0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Comic Sans MS', cursive;
+  overflow: hidden;
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  width: 90%;
+  max-width: 420px;
+}
+
+.chibi {
+  font-size: 5rem;
+  animation: bounce 1.4s infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+h1 {
+  color: #ff3366;
+  font-size: 2.5em;
+}
+
+.buttons {
+  margin-top: 30px;
+  position: relative;
+  height: 120px;
+}
+
+button {
+  font-size: 1.3em;
+  padding: 15px 35px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+}
+
+#yes {
+  background: #ff3366;
+  color: white;
+}
+
+#no {
+  background: #ffd6e0;
+  color: #ff3366;
+  position: absolute;
+  left: 55%;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+  <!-- FRAME 1: ONLY CHIBI -->
+  <div class="chibi">🫶💗🫶</div>
+</div>
+
+<script>
+const card = document.getElementById("card");
+let noCount = 0;
+
+/* HARD SWITCH — NO FADE, NO EFFECT */
+setTimeout(() => {
+  card.innerHTML = `
+    <h1>Will you be my Valentine? 💝</h1>
+    <div class="buttons">
+      <button id="yes">YES 💖</button>
+      <button id="no">NO 🙈</button>
+    </div>
+  `;
+
+  const yesBtn = document.getElementById("yes");
+  const noBtn = document.getElementById("no");
+
+  yesBtn.onclick = () => {
+    card.innerHTML = `
+      <div class="chibi">😌💘🫶</div>
+      <h1>I already knew it 💖</h1>
+    `;
+  };
+
+  noBtn.onclick = () => {
+    noCount++;
+    if (noCount <= 3) {
+      noBtn.style.left =
+        Math.random() * (window.innerWidth - 160) + "px";
+      noBtn.style.top =
+        Math.random() * (window.innerHeight - 140) + "px";
+    } else {
+      card.innerHTML = `
+        <div class="chibi">😏💖😏</div>
+        <h1>Your rejection has been rejected ❌</h1>
+        <h1>You’re already my Valentine 💘</h1>
+      `;
+    }
+  };
+
+}, 1800); // just enough to SEE the chibi
+</script>
+
+</body>
+</html>
+yesBtn.onclick = () => {
+  card.innerHTML = `
+    <div class="chibi">😌💘🫶</div>
+    <h1>I already knew it 💖</h1>
+  `;
+};
+
