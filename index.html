@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: #ffe6eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.container {
+  text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  max-width: 90%;
+}
+
+.hidden { display: none; }
+
+h1 {
+  color: #ff3366;
+  font-size: 2.2em;
+}
+
+.buttons {
+  margin-top: 25px;
+  position: relative;
+  height: 120px;
+}
+
+button {
+  font-size: 1.2em;
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+#yes {
+  background: #ff3366;
+  color: white;
+}
+
+#no {
+  background: #ffd6df;
+  color: #ff3366;
+  position: absolute;
+  left: 60%;
+}
+
+img {
+  max-width: 100%;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="stage1">
+  <img src="boy-girl-heart.png">
+</div>
+
+<div class="container hidden" id="stage2">
+  <h1>Will you be my Valentine?</h1>
+  <div class="buttons">
+    <button id="yes">YES</button>
+    <button id="no">NO</button>
+  </div>
+</div>
+
+<div class="container hidden" id="stageYes">
+  <h1>हमारा वैलेंटाइन बनने के लिए शुक्रिया</h1>
+  <img src="shinchan-heart.png">
+</div>
+
+<div class="container hidden" id="stageNo">
+  <h1>NO is invalid</h1>
+  <h1>Your rejection has been rejected</h1>
+</div>
+
+<script>
+setTimeout(() => {
+  stage1.classList.add("hidden");
+  stage2.classList.remove("hidden");
+}, 2500);
+
+let noCount = 0;
+
+no.onclick = () => {
+  noCount++;
+  if (noCount <= 3) {
+    no.style.left = Math.random() * 200 + "px";
+    no.style.top = Math.random() * 80 + "px";
+  } else {
+    stage2.classList.add("hidden");
+    stageNo.classList.remove("hidden");
+  }
+};
+
+yes.onclick = () => {
+  stage2.classList.add("hidden");
+  stageYes.classList.remove("hidden");
+};
+</script>
+
+</body>
+</html>
